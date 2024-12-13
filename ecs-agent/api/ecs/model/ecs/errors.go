@@ -214,6 +214,11 @@ const (
 	// process can get stuck in that state. However, when the agent reconnects,
 	// it resumes where it stopped previously.
 	ErrCodeUpdateInProgressException = "UpdateInProgressException"
+
+	// ErrCodeThrottlingException for service response error code "ThrottlingException"
+	//
+	// Upstream ECS is throttling the agent and the api request has failed due to of the limit. No
+	ErrCodeThrottlingException = "ThrottlingException"
 )
 
 var exceptionFromCode = map[string]func(protocol.ResponseMetadata) error{
@@ -243,4 +248,5 @@ var exceptionFromCode = map[string]func(protocol.ResponseMetadata) error{
 	"TaskSetNotFoundException":                       newErrorTaskSetNotFoundException,
 	"UnsupportedFeatureException":                    newErrorUnsupportedFeatureException,
 	"UpdateInProgressException":                      newErrorUpdateInProgressException,
+	"ThrottlingException": newErrorThrottlingException,
 }

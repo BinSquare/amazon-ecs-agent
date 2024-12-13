@@ -1180,6 +1180,9 @@
         },
         {
           "shape": "ServerException"
+        },
+        {
+          "shape": "ThrottlingException"
         }
       ]
     },
